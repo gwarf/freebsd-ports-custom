@@ -40,11 +40,19 @@ PLIST_FILES+=	${LUA_MODSHAREDIR}/resty/session.lua \
 		${LUA_MODSHAREDIR}/resty/session/storage/shm.lua \
 		${LUA_MODSHAREDIR}/resty/session/strategies/default.lua \
 		${LUA_MODSHAREDIR}/resty/session/strategies/regenerate.lua
-#FIXME: add back docs
-# share/doc/lua/lua-resty-session/README.md
+
+PORTDOCS=	README.md
+
+DOCSDIR=	${PREFIX}/share/doc/lua${LUA_VER_STR}/${PORTNAME}
+
+OPTIONS_DEFINE=	DOCS
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${LUA_MODSHAREDIR}
 	@(cd ${WRKSRC}/lib && ${COPYTREE_SHARE} . ${STAGEDIR}${LUA_MODSHAREDIR} "-name *\.lua")
+
+do-install-DOCS-on:
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	@${INSTALL_DATA} ${WRKSRC}/README.md ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>
