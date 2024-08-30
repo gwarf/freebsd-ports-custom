@@ -1,5 +1,5 @@
 PORTNAME=	rbw
-DISTVERSION=	1.11.1
+DISTVERSION=	1.12.1
 CATEGORIES=	security
 
 MAINTAINER=	baptiste@bapt.name
