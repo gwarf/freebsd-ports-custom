@@ -1,15 +1,19 @@
 PORTNAME=	rbw
 DISTVERSION=	1.12.1
+PORTREVISION=	1
 CATEGORIES=	security
 
 MAINTAINER=	baptiste@bapt.name
 COMMENT=	Unofficial Bitwarden cli
-WWW=	https://github.com/doy/rbw
+WWW=		https://github.com/doy/rbw
 
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=	cargo
+RUN_DEPENDS=	pinentry:security/pinentry
+
+USES=		cargo
+CARGO_FEATURES=	--no-default-features
 USE_GITHUB=	yes
 GH_ACCOUNT=	doy
 CARGO_CRATES=	addr2line-0.22.0 \
